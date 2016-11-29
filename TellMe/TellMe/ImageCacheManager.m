@@ -80,7 +80,7 @@
         NSLog(@"image found");
         if (completion)
             dispatch_async(dispatch_get_main_queue(), ^{
-                completion(YES, image);
+                completion(YES, image, url);
             });
         return;
     }
@@ -98,13 +98,13 @@
             if (completion)
                 dispatch_async(dispatch_get_main_queue(), ^{
                     //NSLog(@"%@ \n %@", self.imageCache, self.lruArray);
-                    completion(YES, image);
+                    completion(YES, image, url);
                 });
         }
         
         if (completion)
             dispatch_async(dispatch_get_main_queue(), ^{
-                completion(NO, nil);
+                completion(NO, nil, url);
         });
     }];
     
@@ -118,7 +118,7 @@
     if (image) {
         if (completion) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                completion(YES, image);
+                completion(YES, image, url);
             });
         }
         return;
@@ -134,12 +134,12 @@
             [self addNewImage:image withKey:url];
             if (completion)
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(YES, image);
+                    completion(YES, image, url);
                 });
         } else {
             if (completion)
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(NO, nil);
+                    completion(NO, nil, url);
                 });
         }
     });

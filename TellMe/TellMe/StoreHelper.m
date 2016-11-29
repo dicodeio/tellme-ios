@@ -8,7 +8,7 @@
 
 #import "StoreHelper.h"
 
-@interface StoreHelper ()
+@interface StoreHelper () <PNObjectEventListener>
 
 @property (nonatomic, strong) PubNub *client;
 

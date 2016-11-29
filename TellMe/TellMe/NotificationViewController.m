@@ -100,16 +100,19 @@
     
     Notification *curNotification = self.dummyData[indexPath.row];
     
-    [UIImage getImageWithURL:curNotification.imageURL completion:^(BOOL seccess, UIImage *image) {
+    [UIImage getImageWithURL:curNotification.imageURL completion:^(BOOL seccess, UIImage *image, NSString *imageURL) {
         if (seccess) {
-            CGFloat imageW = 50.0;
-            CGFloat imageH = image.size.height / image.size.width * 50.0;
-            UIGraphicsBeginImageContext(CGSizeMake(imageW, imageH));
-            [image drawInRect:CGRectMake(0, 0, imageW, imageH)];
-            UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
             
-            cell.imageView.image = newImage;
+            if ([imageURL isEqualToString:curNotification.imageURL]) {
+                CGFloat imageW = 50.0;
+                CGFloat imageH = image.size.height / image.size.width * 50.0;
+                UIGraphicsBeginImageContext(CGSizeMake(imageW, imageH));
+                [image drawInRect:CGRectMake(0, 0, imageW, imageH)];
+                UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+            
+                cell.imageView.image = newImage;
+            }
         }
     }];
     

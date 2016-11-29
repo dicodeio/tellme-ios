@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^DownloadCompletion)(BOOL seccess, UIImage *image);
+typedef void(^DownloadCompletion)(BOOL seccess, UIImage *image, NSString *imageURL);
 
 @interface UIImage (Cache)
 

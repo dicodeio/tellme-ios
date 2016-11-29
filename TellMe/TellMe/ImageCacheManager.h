@@ -2,7 +2,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef void(^DownloadCompletion)(BOOL seccess, UIImage *image);
+typedef void(^DownloadCompletion)(BOOL seccess, UIImage *image, NSString *imageURL);
 
 @interface ImageCacheManager : NSObject
 
